@@ -1,1 +1,1 @@
-# Thinking-Mind-Client-App
+# Classes Application
