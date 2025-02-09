@@ -1,1 +1,1 @@
-# Thinking-Mind-Client-App-
+# Thinking-Mind-Client-App
