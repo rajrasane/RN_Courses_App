@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Messages = () => {
   const notifications = [
@@ -30,7 +31,8 @@ const Messages = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <SafeAreaView>
       <View style={styles.header}>
         <Text style={styles.title}>Notifications</Text>
         <View style={styles.tabs}>
@@ -50,7 +52,10 @@ const Messages = () => {
           </View>
         </View>
       ))}
+      </SafeAreaView>
     </ScrollView>
+    
+    
   );
 };
 

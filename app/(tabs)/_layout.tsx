@@ -40,7 +40,7 @@ export default function Layout() {
               <Text
                 style={{
                   color: focused ? "black" : color, // Black when active
-                  fontSize: 12,
+                  fontSize: 11,
                   fontWeight: "600",
                   marginTop: 4,
                   textAlign: "center",
@@ -62,7 +62,7 @@ export default function Layout() {
           paddingTop: 19,
           paddingBottom: 18,
           backgroundColor: "#fff",
-          borderTopWidth: 0,
+          borderTopWidth: 0.2,
           elevation: 8,
         },
       })}

@@ -2,18 +2,20 @@ import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Header */}
+      <SafeAreaView style={ { flex : 1 , backgroundColor : "#fff" } }>
       <View style={styles.header}>
         <View>
-          <Text style={styles.greeting}>Welcome Back, Kristin 👋</Text>
+          <Text style={styles.greeting}>Welcome Kristin</Text>
           <Text style={styles.subText}>Continue your learning journey</Text>
         </View>
         <Image
-          source={{ uri: "https://randomuser.me/api/portraits/women/1.jpg" }}
+          source={{ uri: "https://media.istockphoto.com/id/1320811419/photo/head-shot-portrait-of-confident-successful-smiling-indian-businesswoman.jpg?s=612x612&w=0&k=20&c=bCUTB8vd8MnzZFIq-x645-SmLNk2sQzOvOvWCPGDfZ4=" }}
           style={styles.profileImage}
         />
       </View>
@@ -38,7 +40,7 @@ export default function HomeScreen() {
       </LinearGradient>
 
       {/* Course Section */}
-      <View style={styles.section}>
+      {/* <View style={styles.section}>
         <Text style={styles.sectionTitle}>Continue Learning</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={styles.courseCard}>
@@ -47,9 +49,7 @@ export default function HomeScreen() {
               style={styles.courseImage}
             />
             <Text style={styles.courseTitle}>Intro to JavaScript</Text>
-            {/* <TouchableOpacity style={styles.resumeButton}>
-              <Text style={styles.buttonText}>Resume</Text>
-            </TouchableOpacity> */}
+            
           </View>
           <View style={styles.courseCard}>
             <Image
@@ -59,7 +59,7 @@ export default function HomeScreen() {
             <Text style={styles.courseTitle}>React Native Basics</Text>
           </View>
         </ScrollView>
-      </View>
+      </View> */}
 
       {/* Learning Plan */}
       <Text style={styles.sectionTitle}>Learning Goals</Text>
@@ -95,6 +95,8 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>Join Now</Text>
         </TouchableOpacity>
       </View>
+      </SafeAreaView>
+      
     </ScrollView>
   );
 }
@@ -102,7 +104,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f9fafb",
+    backgroundColor: "#fff",
     padding: 20,
   },
   header: {
@@ -120,8 +122,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   profileImage: {
-    width: 60,
-    height: 60,
+    width: 45,
+    height: 45,
+    marginRight : 7,
     borderRadius: 30,
   },
   progressCard: {

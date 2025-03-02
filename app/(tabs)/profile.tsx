@@ -12,7 +12,7 @@ const ProfileScreen = () => {
 
       <View style={styles.profileContainer}>
         <Image
-          source={require('../../assets/icons/profile.png')} // Replace with your image path
+          source={require('../../assets/images/profileexample.jpg')} // Replace with your image path
           style={styles.profileImage}
         />
       </View>

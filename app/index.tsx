@@ -6,8 +6,10 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get("window");
 
@@ -15,7 +17,7 @@ const slides = [
   {
     id: 1,
     image: require("../assets/images/slide1.png"),
-    title: "Free study materials for your success",
+    title: "Free study materials for you",
     description: "Access a variety of free resources to support your learning journey.",
   },
   {
@@ -27,7 +29,7 @@ const slides = [
   {
     id: 3,
     image: require("../assets/images/slide3.png"),
-    title: "Create a personalized study plan",
+    title: "Create a personal study plan",
     description: "Plan your learning effectively and stay on track with your goals.",
   },
 ];
@@ -47,7 +49,8 @@ export default function Onboarding() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView  style={styles.container}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
       {/* Skip Button (Hidden on last slide) */}
       {currentIndex !== slides.length - 1 && (
         <TouchableOpacity
@@ -148,5 +151,14 @@ export default function Onboarding() {
         </View>
       )}
     </View>
+    </SafeAreaView>
+    
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+})
