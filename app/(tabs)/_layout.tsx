@@ -7,9 +7,11 @@ export default function Layout() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, focused }) => {
           let iconSource;
+          let tabName = route.name.charAt(0).toUpperCase() + route.name.slice(1);
 
           if (route.name === "index") {
             iconSource = require("../../assets/icons/home.png");
+            tabName = "Home";
           } else if (route.name === "courses") {
             iconSource = require("../../assets/icons/courses.png");
           } else if (route.name === "messages") {
@@ -47,7 +49,7 @@ export default function Layout() {
                   height: 18,
                 }}
               >
-                {route.name.charAt(0).toUpperCase() + route.name.slice(1)}
+                {tabName}
               </Text>
             </View>
           );
@@ -63,13 +65,12 @@ export default function Layout() {
           borderTopWidth: 0,
           elevation: 8,
         },
-        
       })}
     >
-      <Tabs.Screen name="index" options={{ headerShown : false }} />
-      <Tabs.Screen name="courses" options={{ headerShown : false }} />
-      <Tabs.Screen name="messages" options={{ headerShown : false }} />
-      <Tabs.Screen name="profile" options={{ headerShown : false }} />
+      <Tabs.Screen name="index" options={{ headerShown: false }} />
+      <Tabs.Screen name="courses" options={{ headerShown: false }} />
+      <Tabs.Screen name="messages" options={{ headerShown: false }} />
+      <Tabs.Screen name="profile" options={{ headerShown: false }} />
     </Tabs>
   );
 }
