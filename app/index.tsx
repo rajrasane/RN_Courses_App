@@ -80,7 +80,7 @@ export default function Onboarding() {
           >
             <Image
               source={slide.image}
-              style={{ width: 250, height: 250, resizeMode: "contain" }}
+              style={{ width: 300, height: 300, resizeMode: "contain" }}
             />
             <Text
               style={{
