@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ProfileScreen = () => {
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -12,30 +13,49 @@ const ProfileScreen = () => {
 
       <View style={styles.profileContainer}>
         <Image
-          source={require('../../assets/images/profileexample.jpg')} // Replace with your image path
+          source={require('../../assets/images/profileexample.jpg')}
           style={styles.profileImage}
         />
+        <Text style={styles.userName}>John Doe</Text>
+        <Text style={styles.userEmail}>john.doe@example.com</Text>
       </View>
 
       <TouchableOpacity style={styles.listItem}>
-        <Text style={styles.listItemText}>Favourite</Text>
+        <View style={styles.listItemContent}>
+          <MaterialCommunityIcons name="heart-outline" size={24} color="#007bff" style={styles.listIcon} />
+          <Text style={styles.listItemText}>Favourite</Text>
+        </View>
         <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.listItem}>
-        <Text style={styles.listItemText}>Edit Account</Text>
+        <View style={styles.listItemContent}>
+          <MaterialCommunityIcons name="account-edit-outline" size={24} color="#007bff" style={styles.listIcon} />
+          <Text style={styles.listItemText}>Edit Account</Text>
+        </View>
         <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.listItem}>
-        <Text style={styles.listItemText}>Settings and Privacy</Text>
+        <View style={styles.listItemContent}>
+          <MaterialCommunityIcons name="security" size={24} color="#007bff" style={styles.listIcon} />
+          <Text style={styles.listItemText}>Settings and Privacy</Text>
+        </View>
         <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.listItem}>
-        <Text style={styles.listItemText}>Help</Text>
+        <View style={styles.listItemContent}>
+          <MaterialCommunityIcons name="help-circle-outline" size={24} color="#007bff" style={styles.listIcon} />
+          <Text style={styles.listItemText}>Help</Text>
+        </View>
         <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.logoutButton}>
+        <Text style={styles.logoutText}>Logout</Text>
+      </TouchableOpacity>
+
     </SafeAreaView>
   );
 };
@@ -63,6 +83,16 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+    marginBottom: 10,
+  },
+  userName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+  userEmail: {
+    fontSize: 16,
+    color: 'gray',
   },
   listItem: {
     flexDirection: 'row',
@@ -72,9 +102,29 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },
+  listItemContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   listItemText: {
     fontSize: 18,
     color: '#333',
+    marginLeft: 15,
+  },
+  listIcon: {
+    marginRight: 0,
+  },
+  logoutButton: {
+    backgroundColor: '#000', // black color for logout
+    padding: 15,
+    borderRadius: 8,
+    margin: 20,
+    alignItems: 'center',
+  },
+  logoutText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
