@@ -134,22 +134,49 @@ export default function Onboarding() {
         ))}
       </View>
 
-      {/* Get Started Button (Only on last slide) */}
+      {/* Login & Register Buttons (Only on last slide) */}
       {currentIndex === slides.length - 1 && (
-        <View style={{ alignItems: "center", marginBottom: 30 }}>
-          <TouchableOpacity
-            onPress={handleSkip}
-            style={{
-              backgroundColor: "#000000",
-              paddingVertical: 12,
-              paddingHorizontal: 30,
-              borderRadius: 10,
-            }}
-          >
-            <Text style={{ color: "white", fontSize: 16 }}>Get Started</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+  <View style={{ alignItems: "center", marginBottom: 30 }}>
+    <View style={{ flexDirection: "row", justifyContent: "center", gap: 15 }}>
+      <TouchableOpacity
+        onPress={() => router.push("/login")}
+        style={{
+          backgroundColor: "#000",
+          paddingVertical: 14,
+          paddingHorizontal: 40,
+          borderRadius: 12,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.2,
+          shadowRadius: 5,
+          elevation: 5, // For Android shadow
+        }}
+      >
+        <Text style={{ color: "white", fontSize: 17, fontWeight: "600" }}>Login</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => router.push("/register")}
+        style={{
+          backgroundColor: "#007AFF",
+          paddingVertical: 14,
+          paddingHorizontal: 40,
+          borderRadius: 12,
+          shadowColor: "#007AFF",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.3,
+          shadowRadius: 5,
+          elevation: 5, // For Android shadow
+        }}
+      >
+        <Text style={{ color: "white", fontSize: 17, fontWeight: "600" }}>Register</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+)}
+
+
+
     </View>
     </SafeAreaView>
     

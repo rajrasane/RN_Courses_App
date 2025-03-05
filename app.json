@@ -33,6 +33,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysUsageDescription": "This app needs access to your location.",
+          "locationWhenInUseUsageDescription": "This app needs access to your location to show your current position."
+        }
       ]
     ],
     "experiments": {

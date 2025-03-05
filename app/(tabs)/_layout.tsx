@@ -4,8 +4,8 @@ import { Image, Text, View } from "react-native";
 export default function Layout() {
   return (
     <Tabs
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, focused }) => {
+      screenOptions={({ route }: { route: { name: string } }) => ({
+        tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => {
           let iconSource;
           let tabName = route.name.charAt(0).toUpperCase() + route.name.slice(1);
 
