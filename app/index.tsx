@@ -117,7 +117,7 @@ export default function Onboarding() {
         style={{
           flexDirection: "row",
           justifyContent: "center",
-          marginBottom: currentIndex !== slides.length - 1 ? 92.8 : 20, // Move up for first two slides
+          marginBottom: currentIndex !== slides.length - 1 ? 98 : 20, // Move up for first two slides
         }}
       >
         {slides.map((_, index) => (
@@ -158,9 +158,9 @@ export default function Onboarding() {
       <TouchableOpacity
         onPress={() => router.push("/register")}
         style={{
-          backgroundColor: "#007AFF",
+          backgroundColor: "#d6dbdf",
           paddingVertical: 14,
-          paddingHorizontal: 40,
+          paddingHorizontal: 30,
           borderRadius: 12,
           shadowColor: "#007AFF",
           shadowOffset: { width: 0, height: 4 },
@@ -169,7 +169,7 @@ export default function Onboarding() {
           elevation: 5, // For Android shadow
         }}
       >
-        <Text style={{ color: "white", fontSize: 17, fontWeight: "600" }}>Register</Text>
+        <Text style={{ color: "black", fontSize: 17, fontWeight: "600" }}>Register</Text>
       </TouchableOpacity>
     </View>
   </View>
