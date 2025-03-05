@@ -40,8 +40,8 @@ export default function Onboarding() {
   const router = useRouter();
 
   const handleSkip = () => {
-    router.replace("/(tabs)");
-  };
+    scrollRef.current?.scrollTo({ x: width * (slides.length - 1), animated: true });
+  };  
 
   const handleScroll = (event: any) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
@@ -83,14 +83,14 @@ export default function Onboarding() {
           >
             <Image
               source={slide.image}
-              style={{ width: 300, height: 300, resizeMode: "contain" }}
+              style={{ width: 260, height: 260, resizeMode: "contain" }}
             />
             <Text
               style={{
                 fontSize: 22,
                 fontWeight: "bold",
                 textAlign: "center",
-                marginTop: 20,
+                marginTop: 50,
               }}
             >
               {slide.title}
@@ -107,7 +107,7 @@ export default function Onboarding() {
             </Text>
 
             {/* Extra Space to Keep Alignment */}
-            <View style={{ height: 80 }} />
+            <View style={{ height: 60 }} />
           </View>
         ))}
       </ScrollView>
@@ -158,11 +158,11 @@ export default function Onboarding() {
       <TouchableOpacity
         onPress={() => router.push("/register")}
         style={{
-          backgroundColor: "#d6dbdf",
+          backgroundColor: "#f8f9fa",
           paddingVertical: 14,
           paddingHorizontal: 30,
           borderRadius: 12,
-          shadowColor: "#007AFF",
+          shadowColor: "#000",
           shadowOffset: { width: 0, height: 4 },
           shadowOpacity: 0.3,
           shadowRadius: 5,
