@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
+    padding: 17.5,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
     backgroundColor:'#3D5CFF',
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#fff',
   },

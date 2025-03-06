@@ -40,7 +40,7 @@ const Courses = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { flex: 1, backgroundColor: '#f0f0f0' },
   searchWrapper: { paddingHorizontal: 20, marginTop: 10 },
   courseFilter: { paddingHorizontal: 20, paddingVertical: 10 },
   courseList: { flex: 1, paddingHorizontal: 15, paddingVertical: 15 },

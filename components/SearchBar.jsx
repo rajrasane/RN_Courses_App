@@ -17,7 +17,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => (
 );
 
 const styles = StyleSheet.create({
-  searchContainer: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#f0f0f0', borderRadius: 8 , marginHorizontal : -9 , marginVertical : 5},
+  searchContainer: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#fff', borderRadius: 8 , marginHorizontal : -9 , marginVertical : 5},
   searchIcon: { marginRight: 10 },
   searchInput: { flex: 1, fontSize: 16 },
 });

@@ -18,7 +18,7 @@ export default function Layout() {
 
     return {
       tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
-        <View style={{ alignItems: "center", justifyContent: "center",marginTop : -6 }}>
+        <View style={{ alignItems: "center", justifyContent: "center",marginTop : -10 }}>
           <Image
             source={iconSource}
             style={{
@@ -48,10 +48,10 @@ export default function Layout() {
       tabBarInactiveTintColor: "gray",
       tabBarShowLabel: false,
       tabBarStyle: {
-        height: 70,
+        height: 61,
         paddingTop: 19,
         backgroundColor: "#fff",
-        borderTopWidth: 0.2,
+        borderTopWidth: 0.7,
         elevation: 8,
       },
     };
