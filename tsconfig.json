@@ -17,5 +17,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/(tabs)/messages.jsx", "app/(tabs)/courses.jsx", "app/(screens)/coursedetails.tsx", "components/tabheader.jsx", "app/(tabs)/_layout.tsx"  ]
+, "app/(tabs)/messages.jsx", "app/(tabs)/courses.jsx", "app/(screens)/coursedetails.tsx", "components/TabHeader.jsx", "app/(tabs)/_layout.tsx"  ]
 }
