@@ -2,14 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import TabHeader from '../../components/tabheader';
 
 const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Account</Text>
-      </View>
+      <TabHeader title="Profile"  />
 
       <View style={styles.profileContainer}>
         <Image

@@ -1,236 +1,119 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import TabHeader from '@/components/tabheader'; // Assuming this component exists
 
 export default function HomeScreen() {
   return (
-    <ScrollView style={[styles.container, { flexGrow: 1 }]} showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>Hi, Kristin</Text>
-            <Text style={styles.subText}>Let's start learning</Text>
-          </View>
-          <Image
-            source={{ uri: "https://media.istockphoto.com/id/1320811419/photo/head-shot-portrait-of-confident-successful-smiling-indian-businesswoman.jpg?s=612x612&w=0&k=20&c=bCUTB8vd8MnzZFIq-x645-SmLNk2sQzOvOvWCPGDfZ4=" }}
-            style={styles.profileImage}
-          />
-        </View>
+    <>
+      <StatusBar backgroundColor="#2C47B9" barStyle="light-content" />
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#f0f0f0" }}>
+          <TabHeader title="Home" />
 
-        <LinearGradient
-          colors={['#4f46e5', '#6d28d9']}
-          style={styles.progressCard}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-        >
-          <Text style={styles.progressText}>Today's Learning</Text>
-          <View style={styles.progressRow}>
-            <Text style={styles.progressTime}>3 hrs 15 mins</Text>
-            <TouchableOpacity>
-              <Text style={styles.progressLink}>View Courses</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.progressBarBackground}>
-            <View style={[styles.progressBarFill, { width: "65%" }]} />
-          </View>
-        </LinearGradient>
-
-        <Text style={styles.sectionTitle}>Learning Goals</Text>
-        <View style={styles.learningContainer}>
-          <View style={styles.learningCard}>
-            <Text style={styles.learningText}>📱 Build a Mobile App</Text>
-            <View style={styles.learningRow}>
-              <View style={styles.progressBarBackground}>
-                <View style={[styles.progressBarFill, { width: "83%" }]} />
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Continue Learning</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.courseCard}>
+                <Image
+                  source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKZfF6a5sM19EW71iIlrzRBuuLJMCMxQ7vTQ&s" }}
+                  style={styles.courseImage}
+                />
+                <Text style={styles.courseTitle}>React Native</Text>
+                <TouchableOpacity style={styles.resumeButton}>
+                  <Text style={styles.buttonText}>Resume</Text>
+                </TouchableOpacity>
               </View>
-              <Text style={styles.learningProgress}>50/60</Text>
-            </View>
-          </View>
-
-          <View style={styles.learningCard}>
-            <Text style={styles.learningText}>🖥️ Master Backend Dev</Text>
-            <View style={styles.learningRow}>
-              <View style={styles.progressBarBackground}>
-                <View style={[styles.progressBarFill, { width: "33%" }]} />
+              <View style={styles.courseCard}>
+                <Image
+                  source={{ uri: "https://www.datocms-assets.com/48401/1628644950-javascript.png?auto=format&fit=max&w=1200" }}
+                  style={styles.courseImage}
+                />
+                <Text style={styles.courseTitle}>Mastering JavaScript</Text>
+                <TouchableOpacity style={styles.resumeButton}>
+                  <Text style={styles.buttonText}>Resume</Text>
+                </TouchableOpacity>
               </View>
-              <Text style={styles.learningProgress}>10/30</Text>
-            </View>
+            </ScrollView>
           </View>
-        </View>
 
-        <Text style={styles.sectionTitle}>Upcoming Live Classes</Text>
-        <View style={styles.meetupCard}>
-          <Ionicons name="videocam" size={24} color="#fff" />
-          <Text style={styles.meetupTitle}>Live Coding Session</Text>
-          <Text style={styles.meetupText}>Join a live interactive coding class</Text>
-          <TouchableOpacity style={styles.joinButton}>
-            <Text style={styles.buttonText}>Join Now</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Popular Courses</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.courseCard}>
+                <Image
+                  source={{ uri: "https://miro.medium.com/v2/resize:fit:700/1*3IcLSFuT8PQg4cUBaRXH1A.png" }}
+                  style={styles.courseImage}
+                />
+                <Text style={styles.courseTitle}>Python for Data Science</Text>
+              </View>
+              <View style={styles.courseCard}>
+                <Image
+                  source={{ uri: "https://miro.medium.com/v2/resize:fit:1200/0*M4bxiCIjcTK-2Xr6.jpeg" }}
+                  style={styles.courseImage}
+                />
+                <Text style={styles.courseTitle}>Full-Stack Web Development</Text>
+              </View>
+            </ScrollView>
+          </View>
+
+        </SafeAreaView>
+      </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: '#3D5CFF',
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 90,
-  },
-  greeting: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: 'white',
-  },
-  subText: {
-    color: "white",
-    fontSize: 16,
-    marginTop: 10,
-  },
-  profileImage: {
-    width: 45,
-    height: 45,
-    marginRight: 15,
-    borderRadius: 30,
-  },
-  progressCard: {
-    padding: 20,
-    borderRadius: 20,
-    marginTop: -60,
-    marginBottom: 30,
-    margin: 10,
-  },
-  progressText: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  progressRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 15,
-  },
-  progressTime: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  progressLink: {
-    color: "#fff",
-    textDecorationLine: "underline",
-  },
-  progressBarBackground: {
-    flex: 1,
-    height: 12,
-    backgroundColor: "#d1d5db",
-    borderRadius: 6,
-    marginVertical: 8,
-  },
-  progressBarFill: {
-    height: 12,
-    backgroundColor: "#fcd34d",
-    borderRadius: 6,
+    backgroundColor: "#f0f0f0",
   },
   section: {
     marginVertical: 20,
+    marginLeft: 15,
+    marginRight: 15,
   },
   sectionTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 12,
-    marginLeft: 10,
-  },
-  learningContainer: {
-    gap: 15,
-    margin: 10,
-    marginBottom: 40,
-  },
-  courseImage: {
-    width: "100%",
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  courseTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginTop: 10,
+    fontSize: 24,
+    fontWeight: "600",
+    marginBottom: 16,
+    color: "#333",
   },
   courseCard: {
     backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 15,
+    borderRadius: 12,
+    padding: 18,
     marginRight: 15,
-    width: 200,
+    width: 220,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+  },
+  courseImage: {
+    width: "100%",
+    height: 130,
+    borderRadius: 10,
+    marginBottom: 12,
+  },
+  courseTitle: {
+    fontSize: 17,
+    fontWeight: "500",
+    color: "#444",
   },
   resumeButton: {
-    backgroundColor: "#000", // Black button
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    marginTop: 10,
+    backgroundColor: "#2C47B9",
+    paddingVertical: 12,
+    borderRadius: 10,
+    marginTop: 12,
+    alignSelf: "center",
+    width: "80%",  // Ensures button has the same width
+    alignItems: "center", // Ensures text is centered
   },
   buttonText: {
-    color: "#fff", // White text
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  learningCard: {
-    backgroundColor: "#eef2ff",
-    padding: 15,
-    borderRadius: 12,
-  },
-  learningRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 8,
-  },
-  learningText: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  learningProgress: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#6b7280",
-  },
-  meetupCard: {
-    backgroundColor: "#4f46e5",
-    padding: 20,
-    margin: 10,
-    borderRadius: 15,
-    alignItems: "center",
-    marginTop: 15,
-    marginBottom: 50
-  },
-  meetupTitle: {
-    fontSize: 18,
     color: "#fff",
-    fontWeight: "bold",
-  },
-  meetupText: {
-    color: "#e5e7eb",
-    marginTop: 5,
-  },
-  joinButton: {
-    backgroundColor: "#6d28d9",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginVertical: 15,
+    fontSize: 16,
+    fontWeight: "600",
+    textAlign: "center",
   },
 });

@@ -6,10 +6,17 @@ import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 const CourseDetails = () => {
   const params = useLocalSearchParams();
-  const parsedCourse = JSON.parse(params.course); // Correctly access and parse the course data
+  const parsedCourse = JSON.parse(Array.isArray(params.course) ? params.course[0] : params.course); // Correctly access and parse the course data
   const navigation = useNavigation();
 
-  const getCourseDescription = (title) => {
+  interface Course {
+    title: string;
+    image: any;
+    price: string;
+    duration: string;
+  }
+
+  const getCourseDescription = (title: string): string => {
     switch (title) {
       case 'Web Development Bootcamp':
         return 'Dive into the world of web development. Learn HTML, CSS, and JavaScript to build responsive websites. Master front-end and back-end concepts and create your own web applications.';
@@ -66,7 +73,7 @@ const CourseDetails = () => {
 
         <View style={styles.bottomButtons}>
           <TouchableOpacity style={styles.favoriteButton}>
-            <FontAwesome name="star-o" size={24} color="#000" />
+            <FontAwesome name="heart-o" size={24} color="#000" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.buyButton}>
             <Text style={styles.buyButtonText}>Buy Now</Text>
