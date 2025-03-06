@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import TabHeader from '../../components/tabheader';
+import TabHeader from '../../components/TabHeader';
 
 const ProfileScreen = () => {
 

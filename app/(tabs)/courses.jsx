@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import TabHeader from '../../components/tabheader';
+import TabHeader from '../../components/TabHeader';
 import SearchBar from '../../components/SearchBar';
 import FilterButtons from '../../components/FilterButtons';
 import CourseItem from '../../components/CourseItem';

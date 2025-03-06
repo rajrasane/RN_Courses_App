@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import TabHeader from '@/components/tabheader'; // Assuming this component exists
+import TabHeader from '@/components/TabHeader'; // Assuming this component exists
 
 export default function HomeScreen() {
   return (
