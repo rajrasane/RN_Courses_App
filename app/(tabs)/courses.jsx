@@ -1,32 +1,48 @@
 import React, { useState } from 'react';
-import { View, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
+import { View, ScrollView, SafeAreaView, StyleSheet, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import TabHeader from '../../components/TabHeader';
 import SearchBar from '../../components/SearchBar';
 import FilterButtons from '../../components/FilterButtons';
 import CourseItem from '../../components/CourseItem';
+import FilterModal from '../../components/FilterModal';
 import coursesData from '../../data/courseData';
 
 const Courses = () => {
   const [filter, setFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isFilterModalVisible, setFilterModalVisible] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState({
+    categories: [],
+    priceRange: [0, 1000],
+    duration: [],
+  });
   const router = useRouter();
 
-  const filteredCourses = coursesData.filter((course) =>
-    course.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const toggleFilterModal = () => {
+    setFilterModalVisible(!isFilterModalVisible);
+  };
+
+  const applyFilters = (filters) => {
+    setSelectedFilters(filters);
+    setFilterModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <TabHeader title="Courses" />
       <View style={styles.searchWrapper}>
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <SearchBar 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery} 
+          onFilterPress={toggleFilterModal} 
+        />
       </View>
       <View style={styles.courseFilter}>
         <FilterButtons filter={filter} setFilter={setFilter} />
       </View>
       <ScrollView style={styles.courseList} showsVerticalScrollIndicator={false}>
-        {filteredCourses.map((course, index) => (
+        {coursesData.map((course, index) => (
           <CourseItem
             key={index}
             course={course}
@@ -35,6 +51,13 @@ const Courses = () => {
         ))}
         <View style={styles.space} />
       </ScrollView>
+      <Modal visible={isFilterModalVisible} animationType="slide">
+        <FilterModal 
+          filters={selectedFilters} 
+          onApply={applyFilters} 
+          onClose={toggleFilterModal} 
+        />
+      </Modal>
     </SafeAreaView>
   );
 };
