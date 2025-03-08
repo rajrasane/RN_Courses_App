@@ -1,10 +1,17 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const MessageItem = ({ sender, message, date }) => {
+const MessageItem = ({ sender, message, date , image }) => {
+  const getImageSource = () => {
+    if (image) {
+        return { uri: image }; // Assuming 'image' is a URL
+    } else {
+        return require('../assets/icons/user-icon.png');
+      }
+  };
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/icons/user-icon.png')} style={styles.avatar} />
+      <Image source={getImageSource()} style={styles.avatar} />
       <View style={styles.textContainer}>
         <View style={styles.header}>
           <Text style={styles.sender} numberOfLines={1}>{sender}</Text>

@@ -19,7 +19,7 @@
                     pathname: '/(screens)/chatscreens',
                     params: { sender: item.sender, message: item.message, date: item.date , timestamp: item.timestamp }
                 })}>                
-                    <MessageItem sender={item.sender} message={item.message} date={item.date} />
+                    <MessageItem sender={item.sender} message={item.message} date={item.date} image={item.image}/>
                 </TouchableOpacity>
             )}
         />
