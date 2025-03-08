@@ -19,10 +19,10 @@ const BackButton = ({ color = '#000' }) => {
 const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
-        top: 20,
+        top: 15,
         left: 15,
         zIndex: 10,
-        padding: 10,
+        padding: 8,
         backgroundColor: '#f0f0f0',
         borderRadius: 20,
         borderColor: '#000',

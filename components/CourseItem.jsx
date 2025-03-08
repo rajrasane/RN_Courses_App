@@ -16,7 +16,7 @@ const CourseItem = ({ course, onPress }) => (
 );
 
 const styles = StyleSheet.create({
-  courseItem: { flexDirection: 'row', marginBottom: 25, backgroundColor: '#f9f9f9', padding: 15, borderRadius: 10, elevation: 3 },
+  courseItem: { flexDirection: 'row', marginBottom: 20, backgroundColor: '#f9f9f9', padding: 15, borderRadius: 10, elevation: 2 },
   courseImage: { width: 80, height: 80, borderRadius: 10, marginRight: 15 },
   courseDetails: { flex: 1 },
   courseTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 5 },

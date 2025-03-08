@@ -36,6 +36,8 @@ const Courses = () => {
           searchQuery={searchQuery} 
           setSearchQuery={setSearchQuery} 
           onFilterPress={toggleFilterModal} 
+          text={'Search for courses'}
+          hasFilter={true}
         />
       </View>
       <View style={styles.courseFilter}>
