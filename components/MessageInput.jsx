@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 12,
     backgroundColor: '#f1f1f1',
-    borderRadius: 20,
+    borderRadius: 15,
     fontSize: 16,
   },
   attachmentButton: { marginRight: 10 },
