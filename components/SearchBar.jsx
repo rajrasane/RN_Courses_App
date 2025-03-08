@@ -19,7 +19,7 @@ const SearchBar = ({ searchQuery, setSearchQuery, applyFilters , text ,hasFilter
         />
         {hasFilter ? (
           <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <Ionicons name="options-outline" size={24} color="gray" />
+            <Ionicons style={styles.filter} name="options-outline" size={24} color="gray" />
           </TouchableOpacity> 
         ) : null }
       </View>
@@ -29,9 +29,10 @@ const SearchBar = ({ searchQuery, setSearchQuery, applyFilters , text ,hasFilter
 };
 
 const styles = StyleSheet.create({
-  searchContainer: { flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#fff', borderRadius: 8 },
-  searchIcon: { marginRight: 10 },
+  searchContainer: { flexDirection: 'row', alignItems: 'center', padding: 5, backgroundColor: '#fff', borderRadius: 8 },
+  searchIcon: { marginRight: 7 , marginLeft: 7},
   searchInput: { flex: 1, fontSize: 16 },
+  filter : { marginRight: 7 }
 });
 
 export default SearchBar;
