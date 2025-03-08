@@ -5,7 +5,7 @@ import MessageHeader from '../../components/MessageHeader';
 import MessageBubble from '../../components/MessageBubble';
 
 const ChatsScreen = () => {
-  const { sender, message, date } = useLocalSearchParams();
+  const { sender, message, date , timestamp} = useLocalSearchParams();
 
   return (
     <View style={styles.container}>
@@ -15,7 +15,7 @@ const ChatsScreen = () => {
         <Text style={styles.date}>{date}</Text>
 
         {/* Reusable MessageBubble Component */}
-        <MessageBubble message={message} timestamp="09:06 pm" />
+        <MessageBubble message={message} timestamp={timestamp} />
       </ScrollView>
     </View>
   );

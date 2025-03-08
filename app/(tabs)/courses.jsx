@@ -7,6 +7,7 @@ import FilterButtons from '../../components/FilterButtons';
 import CourseItem from '../../components/CourseItem';
 import FilterModal from '../../components/FilterModal';
 import coursesData from '../../data/courseData';
+import HorizontalRule from '@/components/HorizontalRule';
 
 const Courses = () => {
   const [filter, setFilter] = useState('All');
@@ -43,6 +44,7 @@ const Courses = () => {
       <View style={styles.courseFilter}>
         <FilterButtons filter={filter} setFilter={setFilter} />
       </View>
+      <HorizontalRule />
       <ScrollView style={styles.courseList} showsVerticalScrollIndicator={false}>
         {coursesData.map((course, index) => (
           <CourseItem

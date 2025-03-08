@@ -20,7 +20,7 @@ const FilterButtons = ({ filter, setFilter }) => {
 };
 
 const styles = StyleSheet.create({
-  filterButtons: { flexDirection: 'row' },
+  filterButtons: { flexDirection: 'row' , marginBottom: -4},
   filterButton: { backgroundColor: '#e0e0e0', paddingHorizontal: 15, paddingVertical: 8, borderRadius: 20, marginRight: 10 },
   filterButtonActive: { backgroundColor: 'black' },
   filterButtonText: { color: '#333' },
