@@ -1,12 +1,12 @@
 const messages = [
-  {
-    id: '1',
-    sender: 'Admin',
-    message: 'Your enrollment in "Full Stack Web Development" is confirmed.',
-    date: '2024/03/01',
-    timestamp: '10:15 AM',
-    image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg', // Added image link
-  },
+  // {
+  //   id: '1',
+  //   sender: 'Admin',
+  //   message: 'Your enrollment in "Full Stack Web Development" is confirmed.',
+  //   date: '2024/03/01',
+  //   timestamp: '10:15 AM',
+  //   image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg', // Added image link
+  // },
   {
     id: '2',
     sender: 'Support Team',
@@ -21,6 +21,7 @@ const messages = [
     message: 'Reminder: Your next live class on "JavaScript Async & Await" is at 7 PM.',
     date: '2024/03/03',
     timestamp: '06:45 PM',
+    image : 'https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129416.jpg',
   },
   {
     id: '4',
