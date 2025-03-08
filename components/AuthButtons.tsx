@@ -66,7 +66,7 @@ const styles = StyleSheet.create<AuthButtonsStyles>({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
-    elevation: 5,
+    elevation: 2,
   },
   registerButton: {
     backgroundColor: "#f8f9fa",
@@ -77,7 +77,7 @@ const styles = StyleSheet.create<AuthButtonsStyles>({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
-    elevation: 5,
+    elevation: 2,
   },
   buttonText: {
     color: "white",

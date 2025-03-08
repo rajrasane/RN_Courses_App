@@ -17,7 +17,7 @@
             renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => router.push({
                     pathname: '/(screens)/chatscreens',
-                    params: { sender: item.sender, message: item.message, date: item.date , timestamp: item.timestamp }
+                    params: { sender: item.sender, message: item.message, date: item.date , timestamp: item.timestamp , image: item.image}
                 })}>                
                     <MessageItem sender={item.sender} message={item.message} date={item.date} image={item.image}/>
                 </TouchableOpacity>

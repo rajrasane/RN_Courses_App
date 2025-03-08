@@ -17,17 +17,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'flex-start',
     maxWidth: '85%',
-    elevation: 1.1,
+    elevation: 0.7,
   },
   messageText: {
-    fontSize: 18,
-    lineHeight: 26,
+    fontSize: 16.7,
+    lineHeight: 25,
+    marginTop: -5,
   },
   timestamp: {
-    fontSize: 12,
+    fontSize: 10,
     textAlign: 'right',
     color: 'gray',
-    marginTop: 5,
+    marginTop: -2,
+    marginBottom : -4
   },
 });
 

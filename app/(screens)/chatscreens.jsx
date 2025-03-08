@@ -6,7 +6,7 @@ import MessageBubble from '../../components/MessageBubble';
 import MessageInput from '../../components/MessageInput';
 
 const ChatsScreen = () => {
-  const { sender, message, date, timestamp } = useLocalSearchParams();
+  const { sender, message, date, timestamp ,image} = useLocalSearchParams();
   const [messages, setMessages] = useState([
     { sender, message, timestamp, id: Date.now().toString() },
   ]);
@@ -25,7 +25,7 @@ const ChatsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <MessageHeader sender={sender} />
+      <MessageHeader sender={sender} image={image} />
 
       <ScrollView contentContainerStyle={styles.messagesContainer}>
         <Text style={styles.date}>{date}</Text>

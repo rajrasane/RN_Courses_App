@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import BackButton from '../components/BackButton';
 
-const MessageHeader = ({ sender }) => {
+const MessageHeader = ({ sender, image }) => {
   return (
     <View style={styles.header}>
       <BackButton />
+      <Image
+        source={image ? { uri: image } : require('../assets/icons/user-icon.png')}
+        style={styles.avatar}
+      />
       <Text style={styles.senderText} numberOfLines={1}>
         {sender}
       </Text>
@@ -27,10 +31,17 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
   senderText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
-    marginLeft: 55, // Moves text right beside the back button
+    marginLeft: 10, // Moves text right beside the back button
+    marginTop: 5,
+  },
+  avatar: {
+    width: 37,
+    height: 37,
+    borderRadius: 20,
+    marginLeft: 60,
     marginTop: 5,
   },
 });

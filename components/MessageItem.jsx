@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 20,
+    width: 48,
+    height: 48,
+    borderRadius: 100,
     marginRight: 10,
   },
   textContainer: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   message: {
     color: 'gray',
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 5,
   },
 });
