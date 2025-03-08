@@ -18,7 +18,7 @@ const MessageInput = ({ onSend }) => {
     <View style={styles.container}>
       {/* Attachment Button */}
       <TouchableOpacity style={styles.attachmentButton}>
-        <Ionicons name="attach-outline" size={26} color="gray" />
+        <Ionicons name="attach-outline" size={27} color="gray" />
       </TouchableOpacity>
 
       {/* Message Input */}
