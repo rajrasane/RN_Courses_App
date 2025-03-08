@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 14,
     paddingVertical: 12,
     backgroundColor: '#f1f1f1',
-    borderRadius: 15,
+    borderRadius: 27,
     fontSize: 16,
   },
   attachmentButton: { marginRight: 10 },
