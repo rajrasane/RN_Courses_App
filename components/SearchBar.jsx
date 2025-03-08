@@ -3,7 +3,7 @@ import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import FilterModal from './FilterModal';
 
-const SearchBar = ({ searchQuery, setSearchQuery, applyFilters }) => {
+const SearchBar = ({ searchQuery, setSearchQuery, applyFilters , text ,hasFilter}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -12,14 +12,16 @@ const SearchBar = ({ searchQuery, setSearchQuery, applyFilters }) => {
         <Feather name="search" size={20} color="gray" style={styles.searchIcon} />
         <TextInput
           style={styles.searchInput}
-          placeholder="Find Course"
+          placeholder={text}
           placeholderTextColor="gray"
           value={searchQuery}
           onChangeText={setSearchQuery}
         />
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <Ionicons name="options-outline" size={24} color="gray" />
-        </TouchableOpacity>
+        {hasFilter ? (
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <Ionicons name="options-outline" size={24} color="gray" />
+          </TouchableOpacity> 
+        ) : null }
       </View>
       <FilterModal visible={modalVisible} onClose={() => setModalVisible(false)} applyFilters={applyFilters} />
     </View>
