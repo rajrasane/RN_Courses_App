@@ -54,14 +54,19 @@ const TabHeader = ({ title, showBackButton = false }) => {
 
 const styles = StyleSheet.create({
     header: {
+        position: 'absolute', // Fix at the top
+        top: 0,               // Stick to the top of the screen
+        left: 0,
+        right: 0,
+        zIndex: 1000,         // Ensure it stays on top
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-start', // Align items to the start
+        justifyContent: 'flex-start',
         padding: 14.5,
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
+        // borderBottomWidth: 0.2,
+        // borderBottomColor: '#eee',
         backgroundColor: '#3D5CFF',
-    },
+    },    
     menuButton: {
         padding: 5,
         marginRight: 10, // Add some spacing between the menu and the title

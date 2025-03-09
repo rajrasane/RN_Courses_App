@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   },
   searchWrapper: {
     paddingHorizontal: 20,
-    marginTop: 10,
+    marginTop: 80,
+    marginBottom: 12,
   },
 });
 

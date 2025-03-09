@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   horizontalRule: {
     borderBottomColor: '#ddd', // Line color
     borderBottomWidth: 1.3, // Line thickness (thin and crisp)
-    marginTop: 9, // Adjust vertical spacing as needed
+    // marginTop: 9, // Adjust vertical spacing as needed
   },
 });
 

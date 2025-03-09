@@ -3,7 +3,7 @@ const coursesData = [
       id: 1,
       title: 'Web Development Bootcamp',
       author: 'Aarav Sharma',
-      price: '₹12,999',
+      price: '₹9,999',
       duration: '20 hours',
       image: require('../assets/images/webdev.png'),
     },
