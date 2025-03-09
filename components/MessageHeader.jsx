@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
   senderText: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
-    marginLeft: 10, // Moves text right beside the back button
-    marginTop: 5,
+    marginLeft: 13, // Moves text right beside the back button
+    marginTop: 3,
   },
   avatar: {
     width: 37,
