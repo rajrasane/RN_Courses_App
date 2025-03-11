@@ -1,12 +1,12 @@
 const messages = [
-  // {
-  //   id: '1',
-  //   sender: 'Admin',
-  //   message: 'Your enrollment in "Full Stack Web Development" is confirmed.',
-  //   date: '2024/03/01',
-  //   timestamp: '10:15 AM',
-  //   image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg', // Added image link
-  // },
+  {
+    id: '1',
+    sender: 'Admin',
+    message: 'Your enrollment in "Full Stack Web Development" is confirmed.',
+    date: '2024/03/01',
+    timestamp: '10:15 AM',
+    image: 'https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg', // Added image link
+  },
   {
     id: '2',
     sender: 'Support Team',

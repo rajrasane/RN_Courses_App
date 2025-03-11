@@ -1,61 +1,33 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Modal, Animated, Dimensions, Easing, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import Typography from './ui/Typography';
-import { COLORS, SPACING, RADIUS, SHADOWS } from '../styles/designSystem';
-
-const { width } = Dimensions.get('window');
+import Sidebar from '../components/SideBar'; 
+import { COLORS, SPACING } from '../styles/designSystem';
 
 const TabHeader = ({ title, showBackButton = false }) => {
     const router = useRouter();
     const [menuVisible, setMenuVisible] = useState(false);
-    const [slideAnim] = useState(new Animated.Value(-width)); // Initial position off-screen
-    const [scaleAnim] = useState(new Animated.Value(1)); // Initial scale value
+    const [scaleAnim] = useState(new Animated.Value(1));
 
-    const toggleMenu = () => {
-        if (menuVisible) {
-            Animated.timing(slideAnim, {
-                toValue: -width,
-                duration: 500,
-                easing: Easing.out(Easing.ease),
-                useNativeDriver: true,
-            }).start(() => setMenuVisible(false));
-        } else {
-            setMenuVisible(true);
-            Animated.timing(slideAnim, {
-                toValue: 0,
-                duration: 500,
-                easing: Easing.out(Easing.ease),
-                useNativeDriver: true,
-            }).start();
-        }
-    };
+    const toggleMenu = () => setMenuVisible(!menuVisible);
 
     const handlePressIn = () => {
-        Animated.spring(scaleAnim, {
-            toValue: 0.95,
-            useNativeDriver: true,
-        }).start();
+        Animated.spring(scaleAnim, { toValue: 0.95, useNativeDriver: true }).start();
     };
 
     const handlePressOut = () => {
-        Animated.spring(scaleAnim, {
-            toValue: 1,
-            friction: 3,
-            tension: 40,
-            useNativeDriver: true,
-        }).start();
+        Animated.spring(scaleAnim, { toValue: 1, friction: 3, tension: 40, useNativeDriver: true }).start();
     };
 
     return (
         <View style={styles.header}>
-            {/* Back Button */}
             {showBackButton && (
                 <TouchableOpacity 
                     onPress={() => router.back()} 
                     style={styles.backButton}
-                    accessible={true}
+                    accessible
                     accessibilityLabel="Go back"
                     accessibilityHint="Navigates to the previous screen"
                 >
@@ -63,7 +35,6 @@ const TabHeader = ({ title, showBackButton = false }) => {
                 </TouchableOpacity>
             )}
 
-            {/* Hamburger Menu Button */}
             <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
                 <TouchableOpacity 
                     onPress={toggleMenu} 
@@ -71,7 +42,7 @@ const TabHeader = ({ title, showBackButton = false }) => {
                     activeOpacity={0.7}
                     onPressIn={handlePressIn}
                     onPressOut={handlePressOut}
-                    accessible={true}
+                    accessible
                     accessibilityLabel="Open menu"
                     accessibilityHint="Opens the navigation menu"
                 >
@@ -79,17 +50,10 @@ const TabHeader = ({ title, showBackButton = false }) => {
                 </TouchableOpacity>
             </Animated.View>
 
-            {/* Title */}
-            <Typography 
-                variant="h3" 
-                color="light" 
-                style={styles.headerText}
-                numberOfLines={1}
-            >
+            <Typography variant="h3" color="light" style={styles.headerText} numberOfLines={1}>
                 {title}
             </Typography>
 
-            {/* Notification Button */}
             <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
                 <TouchableOpacity 
                     onPress={() => router.push('/(screens)/notifications')} 
@@ -97,7 +61,7 @@ const TabHeader = ({ title, showBackButton = false }) => {
                     activeOpacity={0.7}
                     onPressIn={handlePressIn}
                     onPressOut={handlePressOut}
-                    accessible={true}
+                    accessible
                     accessibilityLabel="Notifications"
                     accessibilityHint="View your notifications"
                 >
@@ -105,81 +69,7 @@ const TabHeader = ({ title, showBackButton = false }) => {
                 </TouchableOpacity>
             </Animated.View>
 
-            {/* Slide-in Menu */}
-            <Modal transparent visible={menuVisible} animationType="none">
-                <TouchableWithoutFeedback onPress={toggleMenu}>
-                    <View style={styles.overlay}>
-                        <TouchableWithoutFeedback>
-                            <Animated.View style={[styles.menuContainer, { transform: [{ translateX: slideAnim }] }]}>
-                                {/* Cancel Button */}
-                                <TouchableOpacity 
-                                    onPress={toggleMenu} 
-                                    style={styles.cancelButton}
-                                    activeOpacity={0.7}
-                                    onPressIn={handlePressIn}
-                                    onPressOut={handlePressOut}
-                                    accessible={true}
-                                    accessibilityLabel="Close menu"
-                                    accessibilityHint="Closes the navigation menu"
-                                >
-                                    <MaterialCommunityIcons name="close" size={28} color={COLORS.text.primary} />
-                                </TouchableOpacity>
-
-                                {/* Menu Items */}
-                                <TouchableOpacity 
-                                    style={styles.menuItem} 
-                                    onPress={() => {
-                                        router.push('/');
-                                        toggleMenu();
-                                    }}
-                                    activeOpacity={0.7}
-                                    onPressIn={handlePressIn}
-                                    onPressOut={handlePressOut}
-                                >
-                                    <Typography variant="subtitle1">Home</Typography>
-                                </TouchableOpacity>
-                                <TouchableOpacity 
-                                    style={styles.menuItem} 
-                                    onPress={() => {
-                                        router.push('/(screens)/profile');
-                                        toggleMenu();
-                                    }}
-                                    activeOpacity={0.7}
-                                    onPressIn={handlePressIn}
-                                    onPressOut={handlePressOut}
-                                >
-                                    <Typography variant="subtitle1">Profile</Typography>
-                                </TouchableOpacity>
-                                <TouchableOpacity 
-                                    style={styles.menuItem} 
-                                    onPress={() => {
-                                        router.push('/(screens)/settings');
-                                        toggleMenu();
-                                    }}
-                                    activeOpacity={0.7}
-                                    onPressIn={handlePressIn}
-                                    onPressOut={handlePressOut}
-                                >
-                                    <Typography variant="subtitle1">Settings</Typography>
-                                </TouchableOpacity>
-                                <TouchableOpacity 
-                                    style={styles.menuItem} 
-                                    onPress={() => {
-                                        // Add your logout logic here
-                                        console.log('Logout');
-                                        toggleMenu();
-                                    }}
-                                    activeOpacity={0.7}
-                                    onPressIn={handlePressIn}
-                                    onPressOut={handlePressOut}
-                                >
-                                    <Typography variant="subtitle1" color="error">Logout</Typography>
-                                </TouchableOpacity>
-                            </Animated.View>
-                        </TouchableWithoutFeedback>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
+            <Sidebar menuVisible={menuVisible} toggleMenu={toggleMenu} router={router} />
         </View>
     );
 };
@@ -197,46 +87,9 @@ const styles = StyleSheet.create({
         padding: SPACING.md,
         backgroundColor: COLORS.primary,
     },    
-    backButton: {
-        padding: SPACING.xs,
-        marginRight: SPACING.sm,
-    },
-    menuButton: {
-        padding: SPACING.xs,
-        marginRight: SPACING.sm,
-    },
-    headerText: {
-        flex: 1,
-        textAlign: 'center',
-    },
-    notificationButton: {
-        padding: SPACING.xs,
-    },
-    overlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-    },
-    menuContainer: {
-        width: width * 0.8, // Make the menu 80% of the screen width
-        height: '100%',
-        backgroundColor: COLORS.background,
-        padding: SPACING.md,
-        borderTopRightRadius: RADIUS.md,
-        borderBottomRightRadius: RADIUS.md,
-        ...SHADOWS.large,
-    },
-    cancelButton: {
-        position: 'absolute',
-        top: SPACING.md,
-        left: SPACING.md,
-    },
-    menuItem: {
-        paddingVertical: SPACING.sm,
-        paddingHorizontal: SPACING.lg,
-        marginTop: SPACING.md,
-    },
+    backButton: { padding: SPACING.xs, marginRight: SPACING.sm },
+    headerText: { flex: 1, textAlign: 'center' },
+    notificationButton: { padding: SPACING.xs },
 });
 
 export default TabHeader;
