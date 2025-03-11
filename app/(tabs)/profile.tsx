@@ -16,9 +16,9 @@ const ProfileScreen = () => {
     const { userName, email, profilePic } = userData;
 
     const listItems = [
-        { iconName: 'heart-outline', text: 'Favourite', onPress: () => {} },
+        { iconName: 'account-circle-outline', text: 'Account Details', onPress: () => {} },
         { iconName: 'account-edit-outline', text: 'Edit Account', onPress: () => {} },
-        { iconName: 'security', text: 'Settings and Privacy', onPress: () => {} },
+        { iconName: 'cog-outline', text: 'Settings', onPress: () => {router.push('/(screens)/settings')} },
         { iconName: 'help-circle-outline', text: 'Help', onPress: () => {} },
     ];
 
