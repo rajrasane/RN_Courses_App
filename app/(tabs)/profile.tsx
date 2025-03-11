@@ -1,125 +1,48 @@
+// ProfileScreen.js
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet } from 'react-native'; // Changed ScrollView to View
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import TabHeader from '../../components/TabHeader';
+import userData from '../../data/userData';
+import ProfileHeader from '../../components/ProfileHeader';
+import ProfileList from '../../components/ProfileList';
+import ProfileFooter from '../../components/ProfileFooter';
 
 const ProfileScreen = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* Fixed Tab Header */}
-      <TabHeader title="Profile" />
 
-      {/* Scrollable Content */}
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.profileContainer}>
-          <Image
-            source={require('../../assets/images/profileexample.jpg')}
-            style={styles.profileImage}
-          />
-          <Text style={styles.userName}>John Doe</Text>
-          <Text style={styles.userEmail}>john.doe@example.com</Text>
-        </View>
+    const router = useRouter();
 
-        {/* Menu Options */}
-        <TouchableOpacity style={styles.listItem}>
-          <View style={styles.listItemContent}>
-            <MaterialCommunityIcons name="heart-outline" size={24} color="#007bff" />
-            <Text style={styles.listItemText}>Favourite</Text>
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
-        </TouchableOpacity>
+    const { userName, email, profilePic } = userData;
 
-        <TouchableOpacity style={styles.listItem}>
-          <View style={styles.listItemContent}>
-            <MaterialCommunityIcons name="account-edit-outline" size={24} color="#007bff" />
-            <Text style={styles.listItemText}>Edit Account</Text>
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
-        </TouchableOpacity>
+    const listItems = [
+        { iconName: 'heart-outline', text: 'Favourite', onPress: () => {} },
+        { iconName: 'account-edit-outline', text: 'Edit Account', onPress: () => {} },
+        { iconName: 'security', text: 'Settings and Privacy', onPress: () => {} },
+        { iconName: 'help-circle-outline', text: 'Help', onPress: () => {} },
+    ];
 
-        <TouchableOpacity style={styles.listItem}>
-          <View style={styles.listItemContent}>
-            <MaterialCommunityIcons name="security" size={24} color="#007bff" />
-            <Text style={styles.listItemText}>Settings and Privacy</Text>
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.listItem}>
-          <View style={styles.listItemContent}>
-            <MaterialCommunityIcons name="help-circle-outline" size={24} color="#007bff" />
-            <Text style={styles.listItemText}>Help</Text>
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="gray" />
-        </TouchableOpacity>
-
-        {/* Logout Button */}
-        <TouchableOpacity style={styles.logoutButton}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
-  );
+    return (
+        <SafeAreaView style={styles.container}>
+            <TabHeader title="Profile" />
+            <View style={styles.content}>
+                <ProfileHeader profilePic={profilePic} userName={userName} email={email} />
+                <ProfileList items={listItems} />
+                <ProfileFooter onPress={() => {router.push('/(auth)/login')}} />
+            </View>
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 60, // Push content below TabHeader
-  },
-  scrollContainer: {
-    paddingBottom: 20,
-  },
-  profileContainer: {
-    alignItems: 'center',
-    paddingVertical: 30,
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 10,
-  },
-  userName: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  userEmail: {
-    fontSize: 16,
-    color: 'gray',
-  },
-  listItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
-  listItemContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  listItemText: {
-    fontSize: 18,
-    color: '#333',
-    marginLeft: 15,
-  },
-  logoutButton: {
-    backgroundColor: '#000',
-    padding: 15,
-    borderRadius: 8,
-    margin: 20,
-    alignItems: 'center',
-  },
-  logoutText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingTop: 60,
+    },
+    content: {
+        flex: 1, // Added flex: 1 to the content view
+    },
 });
 
 export default ProfileScreen;

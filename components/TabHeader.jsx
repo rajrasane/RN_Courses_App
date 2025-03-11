@@ -1,74 +1,88 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, StyleSheet, TouchableOpacity, Animated, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import Typography from './ui/Typography';
 import Sidebar from '../components/SideBar'; 
-import { COLORS, SPACING } from '../styles/designSystem';
 
 const TabHeader = ({ title, showBackButton = false }) => {
     const router = useRouter();
     const [menuVisible, setMenuVisible] = useState(false);
-    const [scaleAnim] = useState(new Animated.Value(1));
+    const menuIconAnim = useRef(new Animated.Value(1)).current;
+    const notificationIconAnim = useRef(new Animated.Value(1)).current;
+    const lastToggleTime = useRef(0);
 
-    const toggleMenu = () => setMenuVisible(!menuVisible);
-
-    const handlePressIn = () => {
-        Animated.spring(scaleAnim, { toValue: 0.95, useNativeDriver: true }).start();
+    const toggleMenu = () => {
+        // Prevent rapid toggling by checking the time since last toggle
+        const now = Date.now();
+        if (now - lastToggleTime.current < 500) return; // Debounce by 500ms
+        
+        lastToggleTime.current = now;
+        setMenuVisible(!menuVisible);
     };
 
-    const handlePressOut = () => {
-        Animated.spring(scaleAnim, { toValue: 1, friction: 3, tension: 40, useNativeDriver: true }).start();
+    const animateIcon = (animValue) => {
+        Animated.sequence([
+            Animated.timing(animValue, {
+                toValue: 0.9,
+                duration: 100,
+                useNativeDriver: true
+            }),
+            Animated.spring(animValue, {
+                toValue: 1,
+                friction: 3,
+                tension: 40,
+                useNativeDriver: true
+            })
+        ]).start();
+    };
+
+    const handleMenuPress = () => {
+        animateIcon(menuIconAnim);
+        toggleMenu();
+    };
+
+    const handleNotificationPress = () => {
+        animateIcon(notificationIconAnim);
+        router.push('/(screens)/notifications');
     };
 
     return (
         <View style={styles.header}>
-            {showBackButton && (
+            {/* Menu Button */}
+            <Animated.View style={{ transform: [{ scale: menuIconAnim }] }}>
                 <TouchableOpacity 
-                    onPress={() => router.back()} 
-                    style={styles.backButton}
-                    accessible
-                    accessibilityLabel="Go back"
-                    accessibilityHint="Navigates to the previous screen"
-                >
-                    <MaterialCommunityIcons name="arrow-left" size={28} color={COLORS.text.light} />
-                </TouchableOpacity>
-            )}
-
-            <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-                <TouchableOpacity 
-                    onPress={toggleMenu} 
+                    onPress={handleMenuPress} 
                     style={styles.menuButton}
                     activeOpacity={0.7}
-                    onPressIn={handlePressIn}
-                    onPressOut={handlePressOut}
                     accessible
                     accessibilityLabel="Open menu"
                     accessibilityHint="Opens the navigation menu"
                 >
-                    <MaterialCommunityIcons name="menu" size={28} color={COLORS.text.light} />
+                    <MaterialCommunityIcons name="menu" size={28} color="#fff" />
                 </TouchableOpacity>
             </Animated.View>
 
-            <Typography variant="h3" color="light" style={styles.headerText} numberOfLines={1}>
-                {title}
-            </Typography>
+            {/* Title */}
+            <Text style={styles.headerText} numberOfLines={1}>{title}</Text>
 
-            <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+            {/* Spacer to push notification to the right */}
+            <View style={{ flex: 1 }} />
+
+            {/* Notification Button */}
+            <Animated.View style={{ transform: [{ scale: notificationIconAnim }] }}>
                 <TouchableOpacity 
-                    onPress={() => router.push('/(screens)/notifications')} 
+                    onPress={handleNotificationPress}
                     style={styles.notificationButton}
                     activeOpacity={0.7}
-                    onPressIn={handlePressIn}
-                    onPressOut={handlePressOut}
                     accessible
                     accessibilityLabel="Notifications"
                     accessibilityHint="View your notifications"
                 >
-                    <MaterialCommunityIcons name="bell-outline" size={26} color={COLORS.text.light} />
+                    <MaterialCommunityIcons name="bell-outline" size={24.5} color="#fff" />
                 </TouchableOpacity>
             </Animated.View>
 
+            {/* Sidebar Menu */}
             <Sidebar menuVisible={menuVisible} toggleMenu={toggleMenu} router={router} />
         </View>
     );
@@ -83,13 +97,22 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: SPACING.md,
-        backgroundColor: COLORS.primary,
+        justifyContent: 'flex-start',
+        padding: 14.5,
+        backgroundColor: '#3D5CFF',
     },    
-    backButton: { padding: SPACING.xs, marginRight: SPACING.sm },
-    headerText: { flex: 1, textAlign: 'center' },
-    notificationButton: { padding: SPACING.xs },
+    menuButton: {
+        padding: 5,
+        marginRight: 10,
+    },
+    headerText: {
+        fontSize: 22,
+        fontWeight: '600',
+        color: '#fff',
+    },
+    notificationButton: {
+        padding: 5,
+    },
 });
 
 export default TabHeader;

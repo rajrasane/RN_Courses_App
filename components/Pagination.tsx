@@ -13,12 +13,12 @@ const Pagination: React.FC<PaginationProps> = ({ currentIndex }) => {
     container: {
       flexDirection: "row",
       justifyContent: "center",
-      marginBottom: isLastSlide ? 48 : 125.5, // Conditional margin
+      marginBottom: isLastSlide ? 48 : 128.7, // Conditional margin
     },
     dot: {
       height: 6,
       borderRadius: 3,
-      marginHorizontal: 4,
+      marginHorizontal: 6,
     },
   });
 

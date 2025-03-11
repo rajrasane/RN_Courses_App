@@ -12,7 +12,7 @@ export default function Banner() {
           <View style={styles.courseDetailsBanner}>
             <View style={styles.courseTagsBanner}>
               <Text style={styles.courseTagBanner}>LIVE SESSIONS</Text>
-              <Text style={styles.courseTagBanner}>BEGINNER FRIENDLY</Text>
+              {/* <Text style={styles.courseTagBanner}>BEGINNER FRIENDLY</Text> */}
             </View>
             <Text style={styles.courseTitleBanner}>Web Development Bootcamp</Text>
             <Text style={styles.coursePriceBanner}>₹ 9,999</Text>
