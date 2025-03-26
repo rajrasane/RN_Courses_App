@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, StyleSheet, Text } from 'react-native';
-import SideBarItem from '../components/SideBarItem';
+import SideBarItem from './SideBarItem';
 
 const SideBarList = ({ menuItems, toggleMenu, router }) => {
     return (

@@ -47,6 +47,8 @@ export default function Layout() {
       tabBarActiveTintColor: "black",
       tabBarInactiveTintColor: "gray",
       tabBarShowLabel: false,
+      tabBarPressOpacity: 1,
+      tabBarPressColor: 'transparent',
       tabBarStyle: {
         height: 61,
         paddingTop: 19,
